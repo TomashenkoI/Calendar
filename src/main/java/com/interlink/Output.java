@@ -13,7 +13,6 @@ public class Output {
     private int rows = 6;
     private int columns = 7;
 
-
     String[] daysOfWeek = {"Mon", "Tue", "Wen", "Thu", "Fri", "Sat", "  Sun"};
 
     String[][] dates = new String[rows][columns];
@@ -22,7 +21,7 @@ public class Output {
 
         this.monthAndYear = calendarInfo.getYearMonth().toString();
         this.lengthOfTheMonth = calendarInfo.getLengthOfSelectedMonth();
-        this.numberOfTheFirstDayOfTheWeekInTheMonth = calendarInfo.getNumberOfTheFirstDayOfTheWeek();
+        this.numberOfTheFirstDayOfTheWeekInTheMonth = calendarInfo.getNumberOfTheFirstDayOfTheWeekInTheMonth();
 
         if (calendarInfo.isItCurrentMonth()) this.currentDate = String.valueOf(calendarInfo.getCurrentDate());
 
@@ -48,6 +47,7 @@ public class Output {
     }
 
     private void printRows(int i, int y){
+
         if (y == 0) System.out.print("|");
         if (!currentDate.equals(dates[i][y])) {
             if (y == 5) {
@@ -65,9 +65,9 @@ public class Output {
             } else {
                 System.out.printf("%s %2s %s", "\u001B[33m", dates[i][y], "\u001B[0m");
             }
-
         }
         if (y == columns - 1) System.out.println(" |");
+
     }
 
     private void hideNullPositions(String[][] dates){

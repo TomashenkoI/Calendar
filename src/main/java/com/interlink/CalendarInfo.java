@@ -13,12 +13,12 @@ public class CalendarInfo {
 
     public CalendarInfo(Input input) {
 
-        setYearMonth(getMonthByNumber(input.getNumberOfYear(), input.getNumberOfMonth()));
-        setLengthOfSelectedMonth();
-        setNumberOfTheFirstDayOfTheWeekInMonth();
-        setCurrentDate();
+        this.yearMonth = getMonthByNumber(input.getNumberOfYear(), input.getNumberOfMonth());
+        this.lengthOfSelectedMonth = yearMonth.lengthOfMonth();
+        this.numberOfTheFirstDayOfTheWeekInTheMonth = yearMonth.atDay(1).getDayOfWeek().getValue();
+        this.currentDate = LocalDate.now().getDayOfMonth();
 
-        if (YearMonth.now().equals(this.getYearMonth())) this.isItCurrentMonth = true;
+        if (YearMonth.now().equals(this.yearMonth)) this.isItCurrentMonth = true;
 
     }
 
@@ -26,36 +26,20 @@ public class CalendarInfo {
         return YearMonth.of(enteredNumberOfYear, enteredNumberOfMonth);
     }
 
-    public int getNumberOfTheFirstDayOfTheWeek() {
+    public int getNumberOfTheFirstDayOfTheWeekInTheMonth() {
         return numberOfTheFirstDayOfTheWeekInTheMonth;
-    }
-
-    private void setNumberOfTheFirstDayOfTheWeekInMonth() {
-        this.numberOfTheFirstDayOfTheWeekInTheMonth = yearMonth.atDay(1).getDayOfWeek().getValue();
     }
 
     public int getLengthOfSelectedMonth() {
         return lengthOfSelectedMonth;
     }
 
-    public void setLengthOfSelectedMonth() {
-        this.lengthOfSelectedMonth = yearMonth.lengthOfMonth();
-    }
-
-    public YearMonth getYearMonth() {
-        return yearMonth;
-    }
-
-    public void setYearMonth(YearMonth yearMonth) {
-        this.yearMonth = yearMonth;
-    }
-
     public int getCurrentDate() {
         return currentDate;
     }
 
-    public void setCurrentDate() {
-        this.currentDate = LocalDate.now().getDayOfMonth();
+    public YearMonth getYearMonth() {
+        return yearMonth;
     }
 
     public boolean isItCurrentMonth() {
