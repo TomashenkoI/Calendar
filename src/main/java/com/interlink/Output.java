@@ -8,7 +8,7 @@ public class Output {
     private int lengthOfTheMonth;
     private int numberOfTheFirstDayOfTheWeekInTheMonth;
 
-    private String currentDate;
+    private String currentDate = "";
 
     private final static int ROWS = 6;
     private final static int COLUMNS = 7;
@@ -16,9 +16,9 @@ public class Output {
     private final static String RED = "\u001B[31m";
     private final static String GREEN = "\u001B[32m";
 
-    String[] daysOfWeek = {"Mon", "Tue", "Wen", "Thu", "Fri", "Sat", "Sun"};
+    private final String[] daysOfWeek = {"Mon", "Tue", "Wen", "Thu", "Fri", "Sat", "Sun"};
 
-    String[][] dates = new String[ROWS][COLUMNS];
+    private final String[][] dates = new String[ROWS][COLUMNS];
 
     public Output(CalendarInfo calendarInfo) {
 

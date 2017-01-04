@@ -1,7 +1,7 @@
 package com.interlink;
 
 import java.time.*;
-import java.time.YearMonth;
+import java.time.temporal.TemporalAdjusters;
 
 public class CalendarInfo {
 
@@ -15,11 +15,15 @@ public class CalendarInfo {
 
         this.yearMonth = getMonthByNumber(input.getNumberOfYear(), input.getNumberOfMonth());
         this.lengthOfSelectedMonth = yearMonth.lengthOfMonth();
-        this.numberOfTheFirstDayOfTheWeekInTheMonth = yearMonth.atDay(1).getDayOfWeek().getValue();
+        this.numberOfTheFirstDayOfTheWeekInTheMonth = setNumberOfTheFirstDayOfTheWeekInTheMonth();
         this.currentDate = LocalDate.now().getDayOfMonth();
 
         if (YearMonth.now().equals(this.yearMonth)) this.isItCurrentMonth = true;
 
+    }
+
+    private int setNumberOfTheFirstDayOfTheWeekInTheMonth() {
+        return LocalDate.now().with(TemporalAdjusters.firstDayOfMonth()).getDayOfWeek().getValue();
     }
 
     public YearMonth getMonthByNumber(int enteredNumberOfYear ,int enteredNumberOfMonth) {
