@@ -12,16 +12,19 @@ public class Input {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter the number of the year:");
-        this.numberOfYear = enteringValidNumbers(scanner, false);
+        boolean numberForMonth = false;
+        this.numberOfYear = enteringValidNumber(scanner, numberForMonth);
 
         System.out.println("Enter the number of the month:");
-        this.numberOfMonth = enteringValidNumbers(scanner, true);
+        numberForMonth = true;
+        this.numberOfMonth = enteringValidNumber(scanner, numberForMonth);
 
     }
 
-    private int enteringValidNumbers(Scanner scanner, boolean numberForMonth) {
+    private int enteringValidNumber(Scanner scanner, boolean numberForMonth) {
 
         boolean isItCorrectNumber = false;
+        final int numberOfMonths = 12;
         int enteredNumber = 0;
 
         while (!isItCorrectNumber) {
@@ -31,7 +34,7 @@ public class Input {
                 if (enteredNumber > 0) {
                     isItCorrectNumber = true;
                     if (numberForMonth) {
-                        if (enteredNumber > 12) {
+                        if (enteredNumber > numberOfMonths) {
                             isItCorrectNumber = false;
                             System.out.println("Enter the number 1-12: ");
                         }
@@ -40,7 +43,7 @@ public class Input {
                     System.out.println("The number should be > 0");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("It should be the digit > 0!");
+                System.out.println("It should be a digit > 0!");
             }
         }
         return enteredNumber;
