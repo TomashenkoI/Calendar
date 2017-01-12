@@ -6,7 +6,7 @@ public class Output {
 
     private String monthAndYear;
     private int lengthOfTheMonth;
-    private int numberOfTheFirstDayOfTheWeekInTheMonth;
+    private int numberOfFirstDayOfWeekInMonth;
 
     private String currentDate = "";
 
@@ -24,7 +24,7 @@ public class Output {
 
         this.monthAndYear = calendarInfo.getYearMonth().toString();
         this.lengthOfTheMonth = calendarInfo.getLengthOfSelectedMonth();
-        this.numberOfTheFirstDayOfTheWeekInTheMonth = calendarInfo.getNumberOfTheFirstDayOfTheWeekInTheMonth();
+        this.numberOfFirstDayOfWeekInMonth = calendarInfo.getNumberOfFirstDayOfWeekInMonth();
 
         if (calendarInfo.isItCurrentMonth()) this.currentDate = String.valueOf(calendarInfo.getCurrentDate());
 
@@ -49,7 +49,7 @@ public class Output {
 
     }
 
-    private void printRows(int i, int y){
+    private void printRows(int i, int y) {
 
         if (y == 0) System.out.print("|");
 
@@ -67,7 +67,8 @@ public class Output {
     }
 
     private boolean isWeekend(int y) {
-        return y > 4;
+        short dayOfTheWeek = 5;
+        return y >= dayOfTheWeek;
     }
 
     private void printColorNumber(String color, int i, int y) {
@@ -81,7 +82,7 @@ public class Output {
 
     private void fillingTheArraysOfDates() {
         for (int i = 0, date = 1; i < ROWS; i++) {
-            int firstDatePosition = i > 0 ? 0 : numberOfTheFirstDayOfTheWeekInTheMonth - 1;
+            int firstDatePosition = i > 0 ? 0 : numberOfFirstDayOfWeekInMonth - 1;
             for (int y = firstDatePosition; y < COLUMNS && date <= lengthOfTheMonth; y++, date++) {
                     dates[i][y] = String.valueOf(date);
             }

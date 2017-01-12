@@ -5,7 +5,7 @@ import java.time.temporal.TemporalAdjusters;
 
 public class CalendarInfo {
 
-    private int numberOfTheFirstDayOfTheWeekInTheMonth;
+    private int numberOfFirstDayOfWeekInMonth;
     private int lengthOfSelectedMonth;
     private int currentDate;
     private YearMonth yearMonth;
@@ -15,7 +15,7 @@ public class CalendarInfo {
 
         this.yearMonth = getMonthByNumber(input.getNumberOfYear(), input.getNumberOfMonth());
         this.lengthOfSelectedMonth = yearMonth.lengthOfMonth();
-        this.numberOfTheFirstDayOfTheWeekInTheMonth = setNumberOfTheFirstDayOfTheWeekInTheMonth();
+        this.numberOfFirstDayOfWeekInMonth = setNumberOfTheFirstDayOfTheWeekInTheMonth();
         this.currentDate = LocalDate.now().getDayOfMonth();
 
         if (YearMonth.now().equals(this.yearMonth)) this.isItCurrentMonth = true;
@@ -30,8 +30,8 @@ public class CalendarInfo {
         return YearMonth.of(enteredNumberOfYear, enteredNumberOfMonth);
     }
 
-    public int getNumberOfTheFirstDayOfTheWeekInTheMonth() {
-        return numberOfTheFirstDayOfTheWeekInTheMonth;
+    public int getNumberOfFirstDayOfWeekInMonth() {
+        return numberOfFirstDayOfWeekInMonth;
     }
 
     public int getLengthOfSelectedMonth() {
