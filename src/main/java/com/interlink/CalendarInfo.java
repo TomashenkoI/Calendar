@@ -1,7 +1,7 @@
 package com.interlink;
 
-import java.time.*;
-import java.time.temporal.TemporalAdjusters;
+import java.time.LocalDate;
+import java.time.YearMonth;
 
 public class CalendarInfo {
 
@@ -23,7 +23,8 @@ public class CalendarInfo {
     }
 
     private int setNumberOfTheFirstDayOfTheWeekInTheMonth() {
-        return LocalDate.now().with(TemporalAdjusters.firstDayOfMonth()).getDayOfWeek().getValue();
+        int firstDay = 1;
+        return yearMonth.atDay(firstDay).getDayOfWeek().getValue();
     }
 
     public YearMonth getMonthByNumber(int enteredNumberOfYear ,int enteredNumberOfMonth) {
