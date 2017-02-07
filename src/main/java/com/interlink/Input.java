@@ -7,8 +7,7 @@ public class Input {
     private int numberOfYear;
     private int numberOfMonth;
 
-    public Input() {
-
+    public void inputValues() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter the number of the year:");
@@ -18,7 +17,6 @@ public class Input {
         System.out.println("Enter the number of the month:");
         numberForMonth = true;
         this.numberOfMonth = enteringValidNumber(scanner, numberForMonth);
-
     }
 
     private int enteringValidNumber(Scanner scanner, boolean numberForMonth) {

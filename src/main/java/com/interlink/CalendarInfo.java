@@ -13,21 +13,21 @@ public class CalendarInfo {
 
     public CalendarInfo(Input input) {
 
-        this.yearMonth = getMonthByNumber(input.getNumberOfYear(), input.getNumberOfMonth());
+        this.yearMonth = getMonthByEnteredValues(input.getNumberOfYear(), input.getNumberOfMonth());
         this.lengthOfSelectedMonth = yearMonth.lengthOfMonth();
-        this.numberOfFirstDayOfWeekInMonth = setNumberOfTheFirstDayOfTheWeekInTheMonth();
+        this.numberOfFirstDayOfWeekInMonth = setNumberOfFirstDayOfWeekInMonth();
         this.currentDate = LocalDate.now().getDayOfMonth();
 
         if (YearMonth.now().equals(this.yearMonth)) this.isItCurrentMonth = true;
 
     }
 
-    private int setNumberOfTheFirstDayOfTheWeekInTheMonth() {
+    private int setNumberOfFirstDayOfWeekInMonth() {
         int firstDay = 1;
         return yearMonth.atDay(firstDay).getDayOfWeek().getValue();
     }
 
-    public YearMonth getMonthByNumber(int enteredNumberOfYear ,int enteredNumberOfMonth) {
+    public YearMonth getMonthByEnteredValues(int enteredNumberOfYear , int enteredNumberOfMonth) {
         return YearMonth.of(enteredNumberOfYear, enteredNumberOfMonth);
     }
 
