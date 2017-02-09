@@ -4,12 +4,12 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        Input input = new Input();
-        input.inputValues();
+        InputDate inputDate = new InputDate();
+        inputDate.inputValues();
 
-        CalendarInfo calendarInfo = new CalendarInfo(input);
+        CalendarInfo calendarInfo = new CalendarInfo(inputDate.getYearMonth());
 
-        Output output = new Output(calendarInfo);
+        Output output = new Output(inputDate.getYearMonth(), calendarInfo.getDates());
         output.printCalendar();
 
     }
