@@ -1,5 +1,6 @@
 package com.interlink;
 
+import java.time.DayOfWeek;
 import java.time.YearMonth;
 import java.util.Arrays;
 import java.util.stream.IntStream;
@@ -42,8 +43,8 @@ public class Output {
         System.out.println("\t|");
     }
 
-    public void printDates(int week, int day) {
-        if (day == 0) System.out.print("|");
+    public void printDate(int week, int day) {
+        if (day == DayOfWeek.MONDAY.getValue()) System.out.print("|");
 
         if (dates[week][day] != null) {
             System.out.print(dates[week][day]);
@@ -51,13 +52,14 @@ public class Output {
             System.out.print("\t");
         }
 
-        if (day == dates[0].length - 1) {
+        if (day == DayOfWeek.SUNDAY.getValue()) {
             System.out.println("\t|");
         }
     }
 
     private void printRows(String[][] dates) {
-        IntStream.range(0, dates.length).forEach(i -> IntStream.range(0, dates[i].length).forEach(y -> printDates(i, y)));
+        IntStream.range(1, dates.length).forEach(week ->
+                IntStream.range(DayOfWeek.MONDAY.getValue(), dates[week].length).forEach(day -> printDate(week, day)));
     }
 
 }

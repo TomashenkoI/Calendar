@@ -9,7 +9,7 @@ public class Runner {
 
         CalendarInfo calendarInfo = new CalendarInfo(inputDate.getYearMonth());
 
-        Output output = new Output(inputDate.getYearMonth(), calendarInfo.getDates());
+        Output output = new Output(calendarInfo.getYearMonth(), calendarInfo.getArrayOfDates());
         output.printCalendar();
 
     }

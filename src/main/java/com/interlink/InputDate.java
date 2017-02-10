@@ -8,6 +8,7 @@ public class InputDate {
     private YearMonth yearMonth;
 
     public void inputValues() {
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter the number of the year:");
@@ -17,12 +18,14 @@ public class InputDate {
         int numberOfMonth = enterNumberOfMonth(scanner);
 
         this.yearMonth = YearMonth.of(numberOfYear, numberOfMonth);
+
     }
 
     private int enterNumberOfYear(Scanner scanner) {
 
         boolean isItCorrectNumber = false;
         int enteredNumber = 0;
+        String message = "Enter a number > 0!";
 
         while (!isItCorrectNumber) {
 
@@ -31,10 +34,10 @@ public class InputDate {
                 if (enteredNumber > 0) {
                     isItCorrectNumber = true;
                 } else {
-                    System.out.println("The number should be > 0");
+                    System.out.println(message);
                 }
             } catch (NumberFormatException e) {
-                System.out.println("It should be a digit > 0!");
+                System.out.println(message);
             }
         }
         return enteredNumber;
@@ -43,8 +46,9 @@ public class InputDate {
     private int enterNumberOfMonth(Scanner scanner) {
 
         boolean isItCorrectNumber = false;
-        final int numberOfMonths = 12;
+        final short numberOfMonths = 12;
         int enteredNumber = 0;
+        String message = "Enter a number 1-12";
 
         while (!isItCorrectNumber) {
 
@@ -53,13 +57,15 @@ public class InputDate {
                 if (enteredNumber > 0 & enteredNumber <= numberOfMonths) {
                     isItCorrectNumber = true;
                 } else {
-                    System.out.println("The number should be > 0");
+                    System.out.println(message);
                 }
             } catch (NumberFormatException e) {
-                System.out.println("It should be a digit 1-12 !");
+                System.out.println(message);
             }
         }
+
         return enteredNumber;
+        
     }
 
     public YearMonth getYearMonth() {
