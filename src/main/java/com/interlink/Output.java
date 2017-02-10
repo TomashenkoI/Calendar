@@ -43,22 +43,23 @@ public class Output {
         System.out.println("\t|");
     }
 
-    public void printDate(int week, int day) {
-        if (day == DayOfWeek.MONDAY.getValue()) System.out.print("|");
+    public void printDate(int week, int dayOfWeek) {
+        if (dayOfWeek == DayOfWeek.MONDAY.getValue()) System.out.print("|");
 
-        if (dates[week][day] != null) {
-            System.out.print(dates[week][day]);
+        if (dates[week][dayOfWeek] != null) {
+            System.out.print(dates[week][dayOfWeek]);
         } else {
             System.out.print("\t");
         }
 
-        if (day == DayOfWeek.SUNDAY.getValue()) {
+        if (dayOfWeek == DayOfWeek.SUNDAY.getValue()) {
             System.out.println("\t|");
         }
     }
 
     private void printRows(String[][] dates) {
-        IntStream.range(1, dates.length).forEach(week ->
+        short firstWeek = 1;
+        IntStream.range(firstWeek, dates.length).forEach(week ->
                 IntStream.range(DayOfWeek.MONDAY.getValue(), dates[week].length).forEach(day -> printDate(week, day)));
     }
 
