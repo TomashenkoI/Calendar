@@ -2,8 +2,8 @@ package com.interlink;
 
 import java.time.DayOfWeek;
 import java.time.YearMonth;
-import java.util.Arrays;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Output {
 
@@ -39,7 +39,7 @@ public class Output {
         System.out.println("---------------------------------");
 
         System.out.print("|");
-        Arrays.asList(daysOfWeek).forEach(i -> System.out.print("\t" + i));
+        Stream.of(daysOfWeek).forEach(i -> System.out.print("\t" + i));
         System.out.println("\t|");
     }
 
