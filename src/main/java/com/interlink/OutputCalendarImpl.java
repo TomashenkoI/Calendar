@@ -5,15 +5,13 @@ import java.time.YearMonth;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class Output {
+public class OutputCalendarImpl implements OutputCalendar {
 
     private YearMonth yearMonth;
 
-    private final String[] daysOfWeek = {"Mon", "Tue", "Wen", "Thu", "Fri", "Sat", "Sun"};
-
     private final String[][] dates;
 
-    public Output(YearMonth yearMonth, String[][] dates) {
+    public OutputCalendarImpl(YearMonth yearMonth, String[][] dates) {
 
         this.yearMonth = yearMonth;
         this.dates = dates;
@@ -37,10 +35,13 @@ public class Output {
 
     private void printHeader() {
         System.out.println("---------------------------------");
-
         System.out.print("|");
-        Stream.of(daysOfWeek).forEach(i -> System.out.print("\t" + i));
+        printShortNamesOfDaysOfWeek();
         System.out.println("\t|");
+    }
+
+    private void printShortNamesOfDaysOfWeek() {
+        Stream.of(DayOfWeek.values()).forEach(i -> System.out.print("\t" + i.toString().substring(0, 3)));
     }
 
     public void printDate(int week, int dayOfWeek) {
